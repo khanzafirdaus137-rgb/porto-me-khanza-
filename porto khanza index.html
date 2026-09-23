@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Khanza — My Story, My Chapter</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       RESET
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #f8f3ed;
+      color: #332b28;
+      overflow-x: hidden;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+
+    /* =========================
+       VARIABLES
+    ========================== */
+
+    :root {
+      --cream: #f8f3ed;
+      --cream-dark: #eee4da;
+      --brown: #332b28;
+      --brown-light: #6d5b52;
+      --pink: #d9a7a5;
+      --pink-light: #ead0cc;
+      --white: #fffdf9;
+      --border: rgba(51, 43, 40, 0.15);
+    }
+
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 6%;
+      z-index: 1000;
+
+      background: rgba(248, 243, 237, 0.85);
+      backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 1px;
+      background: var(--brown);
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu-btn {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       CHAPTER INDICATOR
+    ========================== */
+
+    .chapter-nav {
+      position: fixed;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      z-index: 900;
+    }
+
+    .chapter-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+      background: #cbbdb4;
+
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .chapter-dot.active {
+      transform: scale(1.7);
+      background: var(--brown);
+    }
+
+
+    /* =========================
+       GENERAL
+    ========================== */
+
+    section {
+      padding: 120px 8%;
+      position: relative;
+    }
+
+    .chapter-label {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 6vw, 82px);
+      line-height: 0.95;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    .section-title em {
+      color: var(--brown-light);
+    }
+
+    .section-description {
+      max-width: 580px;
+      color: var(--brown-light);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 100vh;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+
+      padding-top: 100px;
+    }
+
+    .hero-content {
+      padding-right: 40px;
+    }
+
+    .hero-small {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(65px, 10vw, 145px);
+      line-height: 0.82;
+      font-weight: 500;
+    }
+
+    .hero-title span {
+      display: block;
+      font-style: italic;
+      margin-left: 50px;
+    }
+
+    .hero-subtitle {
+      margin-top: 35px;
+      max-width: 450px;
+      line-height: 1.7;
+      color: var(--brown-light);
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+
+      margin-top: 35px;
+      padding: 15px 24px;
+
+      border: 1px solid var(--brown);
+      border-radius: 100px;
+
+      transition: 0.3s;
+    }
+
+    .hero-button:hover {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    .hero-photo {
+      position: relative;
+      height: 650px;
+      max-width: 480px;
+      margin-left: auto;
+    }
+
+    .hero-photo img {
+      height: 100%;
+      object-fit: cover;
+      border-radius: 230px 230px 10px 10px;
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: -20px;
+      left: -40px;
+
+      background: var(--white);
+      padding: 18px 22px;
+
+      box-shadow: 0 15px 35px rgba(50, 40, 35, 0.12);
+      transform: rotate(-5deg);
+    }
+
+    .photo-caption span {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about {
+      background: var(--cream-dark);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .about-photo {
+      position: relative;
+    }
+
+    .about-photo img {
+      height: 550px;
+      object-fit: cover;
+    }
+
+    .about-note {
+      position: absolute;
+      right: -35px;
+      bottom: 35px;
+
+      width: 180px;
+      padding: 25px;
+
+      background: var(--pink-light);
+      transform: rotate(4deg);
+    }
+
+    .about-note p {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 45px;
+      border-top: 1px solid var(--border);
+    }
+
+    .info-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-item small {
+      display: block;
+      color: var(--brown-light);
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 7px;
+    }
+
+
+    /* =========================
+       SCHOOL
+    ========================== */
+
+    .school-intro {
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      margin-bottom: 80px;
+    }
+
+    .school-intro .section-description {
+      padding-top: 20px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      width: 50%;
+      padding: 25px 45px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      margin-left: 50%;
+    }
+
+    .timeline-year {
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--brown-light);
+    }
+
+    .timeline-title {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      margin: 10px 0;
+    }
+
+    .timeline-text {
+      color: var(--brown-light);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       ORGANIZATION
+    ========================== */
+
+    .organization {
+      background: var(--brown);
+      color: var(--white);
+    }
+
+    .organization .chapter-label,
+    .organization .section-description {
+      color: #cdbfb7;
+    }
+
+    .organization-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .organization-photo {
+      position: relative;
+    }
+
+    .organization-photo img {
+      height: 600px;
+      object-fit: cover;
+    }
+
+    .organization-card {
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .org-item {
+      padding: 25px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .org-item span {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #cdbfb7;
+    }
+
+    .org-item h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      margin: 7px 0;
+    }
+
+    .org-item p {
+      color: #cdbfb7;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       PROJECTS
+    ========================== */
+
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 60px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px 30px;
+    }
+
+    .project-card {
+      cursor: pointer;
+    }
+
+    .project-image {
+      height: 420px;
+      overflow: hidden;
+      background: var(--cream-dark);
+    }
+
+    .project-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: 0.6s;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .project-number {
+      font-size: 11px;
+      color: var(--brown-light);
+      margin-top: 20px;
+    }
+
+    .project-title {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      margin-top: 5px;
+    }
+
+    .project-description {
+      color: var(--brown-light);
+      margin-top: 7px;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       GALLERY
+    ========================== */
+
+    .gallery {
+      background: var(--cream-dark);
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 100px;
+      gap: 15px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 5;
+      grid-row: span 5;
+    }
+
+    .gallery-item:nth-child(2) {
+      grid-column: span 4;
+      grid-row: span 3;
+    }
+
+    .gallery-item:nth-child(3) {
+      grid-column: span 3;
+      grid-row: span 4;
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: span 4;
+      grid-row: span 3;
+    }
+
+    .gallery-item:nth-child(5) {
+      grid-column: span 3;
+      grid-row: span 4;
+    }
+
+    .gallery-item:nth-child(6) {
+      grid-column: span 5;
+      grid-row: span 3;
+    }
+
+
+    /* =========================
+       VALUES
+    ========================== */
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 70px;
+    }
+
+    .value-card {
+      min-height: 300px;
+      padding: 35px;
+
+      border: 1px solid var(--border);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      transition: 0.3s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      background: var(--white);
+    }
+
+    .value-number {
+      font-size: 12px;
+      color: var(--brown-light);
+    }
+
+    .value-title {
+      font-family: "Playfair Display", serif;
+      font-size: 40px;
+    }
+
+    .value-text {
+      color: var(--brown-light);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       FUTURE
+    ========================== */
+
+    .future {
+      background: var(--pink-light);
+      text-align: center;
+    }
+
+    .future-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(55px, 9vw, 120px);
+      line-height: 0.9;
+    }
+
+    .future-title em {
+      font-style: italic;
+    }
+
+    .future-text {
+      max-width: 600px;
+      margin: 40px auto;
+      line-height: 1.8;
+      color: var(--brown-light);
+    }
+
+    .dreams {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .dream {
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    .contact {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .contact-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(60px, 10vw, 140px);
+      line-height: 0.85;
+    }
+
+    .contact-title span {
+      font-style: italic;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .social-links a {
+      padding-bottom: 5px;
+      border-bottom: 1px solid var(--brown);
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      padding: 30px 8%;
+      display: flex;
+      justify-content: space-between;
+
+      border-top: 1px solid var(--border);
+
+      font-size: 12px;
+      color: var(--brown-light);
+    }
+
+
+    /* =========================
+       REVEAL ANIMATION
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.9s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 800px) {
+
+      .navbar {
+        height: 65px;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 65px;
+        left: 0;
+
+        width: 100%;
+        padding: 30px;
+
+        background: var(--cream);
+
+        flex-direction: column;
+        align-items: center;
+
+        transform: translateY(-120%);
+        transition: 0.4s;
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .chapter-nav {
+        display: none;
+      }
+
+      section {
+        padding: 90px 6%;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .hero-content {
+        padding-right: 0;
+      }
+
+      .hero-title {
+        font-size: 70px;
+      }
+
+      .hero-title span {
+        margin-left: 25px;
+      }
+
+      .hero-photo {
+        height: 500px;
+        margin: auto;
+        width: 90%;
+      }
+
+      .photo-caption {
+        left: -10px;
+      }
+
+      .about-grid,
+      .organization-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .about-photo img {
+        height: 450px;
+      }
+
+      .school-intro {
+        display: block;
+      }
+
+      .timeline::before {
+        left: 10px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 40px;
+        text-align: left;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image {
+        height: 350px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 180px;
+      }
+
+      .gallery-item:nth-child(n) {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-links {
+        flex-wrap: wrap;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
+  <header class="navbar">
+
+    <a href="#home" class="logo">K.</a>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#school">Journey</a></li>
+        <li><a href="#organization">Organization</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#future">Future</a></li>
+      </ul>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn">
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- =========================
+       CHAPTER NAVIGATION
+  ========================== -->
+
+  <div class="chapter-nav">
+
+    <a href="#home" class="chapter-dot active"></a>
+    <a href="#about" class="chapter-dot"></a>
+    <a href="#school" class="chapter-dot"></a>
+    <a href="#organization" class="chapter-dot"></a>
+    <a href="#projects" class="chapter-dot"></a>
+    <a href="#gallery" class="chapter-dot"></a>
+    <a href="#values" class="chapter-dot"></a>
+    <a href="#future" class="chapter-dot"></a>
+
+  </div>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content reveal">
+
+      <p class="hero-small">
+        Personal Portfolio — 2026
+      </p>
+
+      <h1 class="hero-title">
+        My
+        <span>Story</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Welcome to my little corner of the internet.
+        A collection of experiences, memories, projects,
+        and dreams that make up my journey.
+      </p>
+
+      <a href="#about" class="hero-button">
+        Start My Story
+        <span>↓</span>
+      </a>
+
+    </div>
+
+
+    <div class="hero-photo reveal">
+
+      <!-- GANTI DENGAN FOTO KAMU -->
+      <img src="images/profile.jpg" alt="Khanza">
+
+      <div class="photo-caption">
+        <span>hello, I'm Khanza.</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CHAPTER 01
+  ========================== -->
+
+  <section class="about" id="about">
+
+    <div class="about-grid">
+
+      <div class="about-photo reveal">
+
+        <img src="images/about.jpg" alt="About Khanza">
+
+        <div class="about-note">
+          <p>
+            “Every experience has
+            something to teach.”
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="reveal">
+
+        <p class="chapter-label">
+          Chapter 01 — Who Am I?
+        </p>
+
+        <h2 class="section-title">
+          A little bit
+          <em>about me.</em>
+        </h2>
+
+        <p class="section-description">
+          Hi! I'm Khanza, a student who enjoys exploring
+          new experiences, working with people, and being
+          involved in creative activities.
+        </p>
+
+        <div class="info-grid">
+
+          <div class="info-item">
+            <small>NAME</small>
+            Khanza Farras Firdaus
+          </div>
+
+          <div class="info-item">
+            <small>CURRENTLY</small>
+            Student
+          </div>
+
+          <div class="info-item">
+            <small>INTERESTS</small>
+            Communication
+          </div>
+
+          <div class="info-item">
+            <small>LOVES</small>
+            Creativity & Organization
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CHAPTER 02
+  ========================== -->
+
+  <section id="school">
+
+    <div class="school-intro reveal">
+
+      <div>
+        <p class="chapter-label">
+          Chapter 02 — School Life
+        </p>
+
+        <h2 class="section-title">
+          Where I
+          <em>grow.</em>
+        </h2>
+      </div>
+
+      <p class="section-description">
+        School is not only a place where I learn lessons
+        from books, but also where I meet people, create
+        memories, and discover new sides of myself.
+      </p>
+
+  
